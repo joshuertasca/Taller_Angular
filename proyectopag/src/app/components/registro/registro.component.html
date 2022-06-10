@@ -1,0 +1,73 @@
+<!-- componente 4: registro -->
+
+<div class=" bg-dark">
+  <div class=" container text-white ">
+
+      <h1 class=" container text-center mx-5 my-3 p-5 fs-1"> {{titulo_formulario | uppercase}}</h1>
+      <p class=" container text-start mx-5 fs-4"> Al registrarte con nosotros, haras parte de nuestra comunidad y
+          tendras los siguientes beneficios:</p>
+
+      <ul class=" container text-start mx-5 px-5 fs-5">
+          <li class="">10% de descuento en todos los productos de la tienda virtual </li>
+          <li class="">Se te mantendra informado de nuestros eventos y promociones mas esperadas</li>
+          <li class="">Por cada compra que realices obtendras puntos acumulables que podras redimir por el valor
+              de los productos en futuras compras</li>
+          <li class="">Se realizaran sorteos mensuales de productos espciales a los integrantes de nuestra
+              comunidad</li>
+      </ul>
+
+      <div class="d-flex flex-column align-content-center justify-content-center container mx-5 px-5 pt-5 w-100">
+          <form [formGroup]="registroForm" (ngSubmit)="guardarContacto()"  class="d-flex flex-column align-content-center justify-content-center  container mx-5 px-5 w-100">
+              <label for="correo" class="form-label">Correo electronico</label>
+              <input type="email" formControlName="correo" class="form-control w-50" id="correo" aria-describedby="emailHelp">
+              <span *ngIf="registroForm.get('correo')?.hasError('pattern') && registroForm.get('correo')?.touched" class=" text-danger fw-bold">Correo Ivalido</span>
+              <span  *ngIf="registroForm.get('correo')?.hasError('required') && registroForm.get('correo')?.touched" class=" text-danger fw-bold">Correo obligatorio</span>
+
+
+              <label for="nombre"  class="form-label">Nombre completo</label>
+              <input type="text" formControlName="nombre" class="form-control w-50" id="nombre">
+              <span  *ngIf="registroForm.get('nombre')?.hasError('required') && registroForm.get('nombre')?.touched" class=" text-danger fw-bold">Nombre obligatorio</span>
+
+
+              <label for="cedula"  class="form-label">Documento de identidad</label>
+              <input type="text" formControlName="cedula" class="form-control w-50" id="cedula">
+              <span  *ngIf="registroForm.get('cedula')?.hasError('required') && registroForm.get('cedula')?.touched" class=" text-danger fw-bold">Cedula obligatoria</span>
+              <span  *ngIf="registroForm.get('cedula')?.hasError('pattern') && registroForm.get('cedula')?.touched" class=" text-danger fw-bold">Cedula solo son numeros</span>
+              <span  *ngIf="registroForm.get('cedula')?.hasError('minlength') && registroForm.get('cedula')?.touched" class=" text-danger fw-bold">Cedula debe tener mas de 5 digitos</span>
+
+
+              <div class=" d-flex flex-row">
+                  <div>
+                      <p>Genero</p>
+                      <select id="genero" formControlName="genero" class="form-select mt-0 mb-4" aria-label="Default select example">
+                          <option selected disabled>seleccione una ...</option>
+                          <option value="hombre">Hombre</option>
+                          <option value="mujer">Mujer</option>
+                          <option value="otro">Otro</option>
+                      </select>
+                  </div>
+                </div>
+                <span  *ngIf="registroForm.get('genero')?.hasError('required') && registroForm.get('genero')?.touched" class=" text-danger fw-bold">debe seleccionar el genero</span>
+
+              <label for="contrasena" class="form-label">Contraseña</label>
+              <input type="password"   formControlName="contrasena" class="form-control w-50" id="contrasena">
+              <span  *ngIf="registroForm.get('contrasena')?.hasError('required') && registroForm.get('contrasena')?.touched" class=" text-danger fw-bold">contraseña obligatoria</span>
+              <span  *ngIf="registroForm.get('contrasena')?.hasError('minlength') && registroForm.get('contrasena')?.touched " class=" text-danger fw-bold">Contraseña muy corta, debe tener minimo 5 caracteres</span>
+
+              <div class=" d-flex flex-row m-3">
+                  <input type="checkbox" formControlName="acepta_terminos" class="form-check-input" id="acepta_terminos">
+                  <label class="form-check-label"  for="acepta_terminos">Acepta terminos y condiciones</label>
+              </div>
+              <span  *ngIf="registroForm.get('acepta_terminos')?.hasError('required') && registroForm.get('acepta_terminos')?.touched" class=" text-danger fw-bold">se deben aceptar los terminos para el registro</span>
+
+
+              <button id="btn_registrate" type="submit" class="btn btn-primary w-25 mb-5" [disabled]="registroForm.invalid">registrarse</button>
+
+
+          </form>
+      </div>
+
+
+
+  </div>
+</div>

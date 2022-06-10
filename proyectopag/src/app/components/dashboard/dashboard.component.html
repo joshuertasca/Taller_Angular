@@ -1,0 +1,36 @@
+<div class=" container m-5">
+
+<table class="table" *ngIf="listaUsuarios.length>0">
+  <thead>
+
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">correo</th>
+      <th scope="col">nombre</th>
+      <th scope="col">cedula</th>
+      <th scope="col">genero</th>
+      <th scope="col">acciones</th>
+    </tr>
+
+  </thead>
+  <tbody>
+
+    <tr *ngFor="let contacto of listaUsuarios; let indice = index">
+      <th scope="">{{indice+1}}</th>
+      <td>{{contacto.correo}}</td>
+      <td>{{contacto.nombre}}</td>
+      <td>{{contacto.cedula}}</td>
+      <td>{{contacto.genero}}</td>
+
+      <td>
+      <i class="fas fa-pen me-5" [routerLink]="['/editar/', contacto._id]"></i>
+      <i class="fas fa-trash" (click)="eliminarContacto(contacto._id)"></i>
+      </td>
+    </tr>
+
+  </tbody>
+</table>
+
+
+
+</div>

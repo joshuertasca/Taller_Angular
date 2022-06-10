@@ -1,0 +1,32 @@
+<!-- componente 3: tienda virtual -->
+<h1 class=" text-primary container text-center my-5">Tienda Virtual</h1>
+<h3 class=" container text-center my-5"> Aquí encontraras los mejores productos que llevaremos a domicilio en la
+    ciudad de bogotá</h3>
+
+<div class="btn-group d-flex container w-50" role="group" aria-label="Basic outlined example">
+    <button type="button" class="btn btn-outline-primary">Postres</button>
+    <button type="button" class="btn btn-outline-primary">Panaderia</button>
+    <button type="button" class="btn btn-outline-primary">Desayunos</button>
+</div>
+
+<div class=" container mt-5 d-flex justify-content-center ">
+    <div id="productos" class="row">
+
+    <section *ngFor="let objeto of listaProductos; let indice = index">
+            <div class=" col-6 offset-3">
+                <div class="card w-100 my-4">
+                    <img src="{{objeto.img_url}}}"
+                        class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{indice+1}}. {{objeto.producto}}</h5>
+                        <p class="card-text">{{objeto.descripcion}}</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">{{objeto.precio}}</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </div>
+</div>
